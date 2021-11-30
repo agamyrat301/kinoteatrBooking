@@ -20,15 +20,15 @@ class ReportController extends Controller
             // $seans_start_date = Carbon::createFromFormat('m-d-Y', $seans_start_date)->format('Y-m-d');
              if (strlen($seans_start_date) == 10) {
 
-                 return $query->whereDate('created_at', $seans_start_date);
+                 return $query->whereDate('start_date', $seans_start_date);
 
              } else {
                  $from = substr($seans_start_date, 0, 10);
                  $to = substr($seans_start_date, 13, 24);
-                 return $query->whereBetween('created_at', [$from, $to]);
+                 return $query->whereBetween('start_date', [$from, $to]);
              }
-         })->orderBy('created_at', 'DESC')->get();
+         })->orderBy('created_at', 'DESC')->paginate(10);
 
-        return view('admin.reports.index',compact('seanses'));
+        return view('admin.reports.index')->with('seanses', $seanses)->with('seans_start_date', $seans_start_date);
     }
 }

@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    5D hasabat
+@endsection
 @section('third_party_stylesheets')
     <link  rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
@@ -7,7 +10,7 @@
 @section('content')
     <div class="container-fluid p-3">
       <div class="float-left d-flex">
-        <h2 class="ml-2">Hasabat</h2>
+        <h2 class="ml-2">5D Hasabat</h2>
       </div>
 
         <div class="float-right">
@@ -15,14 +18,14 @@
         <div class="form-row">
 
           <div class="form-group mr-4">
-            <a href="#" class="btn btn-primary btn-block">5D</a>
+            <a href="{{route('reports.index')}}" class="btn btn-primary btn-block">3D</a>
         </div>
 
             <form class="form-row" action="" method="get">
                 @csrf
 
                 <div class="form-group col-md-6">
-                    <input type="text" class="form-control flatpickr" name="seans_start_date" id="seans_start_date"
+                    <input type="text" class="form-control flatpickr" name="seans_start_date" id="seans_start_date" value="{{ $seans_start_date }}"
                         placeholder="seans wagty...">
                 </div>
 
@@ -58,14 +61,14 @@
                         <th>#</th>
                         <th>bahasy</th>
                         <th>orny</th>
-                        <th>Seans bahasy</th>
+                        <th>berlen wagty</th>
                       </tr>
                     </thead>
 
                     <tbody>
                         @foreach ($fiveds as $fived)
                             <tr>
-                                <td>{{$fived->id }}</td>
+                                <td>  {{ (request('page', 1) - 1) * 10 + $loop->iteration }}</td>
                                 <td>{{ $fived->price }} TMT</td>
                                 <td>{{$fived->spot->number }}</td>
                                 <td>{{ date('d/m/Y H:i', strtotime($fived->created_at)) }}</td>
@@ -78,8 +81,11 @@
 
                   </table>
                 </div>
+              
                 <!-- /.card-body -->
               </div>
+              {{-- {{ $fiveds->links() }} --}}
+              {{ $fiveds->appends(['seans_start_date'=>$seans_start_date])->links() }}
               <!-- /.card -->
             </div>
           </div>

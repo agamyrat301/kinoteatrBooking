@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    3D hasabat
+@endsection
 @section('third_party_stylesheets')
     <link  rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
@@ -7,7 +10,7 @@
 @section('content')
     <div class="container-fluid p-3">
       <div class="float-left d-flex">
-        <h2 class="ml-2">Hasabat</h2>
+        <h2 class="ml-2">3D Hasabat</h2>
       </div>
 
         <div class="float-right">
@@ -23,7 +26,7 @@
 
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control flatpickr" name="seans_start_date" id="seans_start_date"
-                        placeholder="seans wagty...">
+                      value="{{ $seans_start_date }}"  placeholder="seans wagty...">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -73,7 +76,7 @@
                     <tbody>
                         @foreach ($seanses as $seans)
                             <tr>
-                                <td>{{$seans->id }}</td>
+                                <td>  {{ (request('page', 1) - 1) * 10 + $loop->iteration }}</td>
                                 <td>{{ $seans->film_name }}</td>
                                 <td>{{$seans->seans_number }}</td>
                                 

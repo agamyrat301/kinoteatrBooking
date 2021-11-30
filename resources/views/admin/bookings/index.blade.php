@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Satylan biletler
+@endsection
 @section('third_party_stylesheets')
     <link  rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">

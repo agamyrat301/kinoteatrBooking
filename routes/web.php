@@ -31,6 +31,7 @@ Route::prefix('admin')->group(function(){
         Route::resource('fiveds', 'FivedController');
         Route::get('reports', 'ReportController@index')->name('reports.index');
         Route::get('fived_reports', 'FivedController@fived_reports')->name('reports.fived_reports');
+        Route::get('fiveds_empty', 'FivedController@empty')->name('fiveds_empty');
     });
 });
 

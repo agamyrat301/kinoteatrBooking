@@ -65,10 +65,15 @@
                 <div class="row  places my-3 my-3 d-block">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header d-flex">
+                            <div class="card-header justify-content-between">
                                 <h3 class="card-title">
                                    5D  Zaldan yer saylan
                                 </h3>
+
+                                <div class="float-right">
+                                    <a href="{{route('fiveds_empty')}}" class="btn btn-primary">Yerleri boshat</a>
+                                </div>
+
                             </div>
 
                             <div class="card-body">
@@ -185,8 +190,10 @@
             } else
 
             if(price == ''){
+
                 alert('bahasyny girin');
                 return;
+
             } else {
                 $.ajax({
                     type:'POST',
@@ -198,6 +205,7 @@
                         _token: "{{ csrf_token() }}",
                     },
                     success:function(data) {
+                        console.log(data);
                       $('#toprint').css('display','block');
                       $('.to_print_spot').text('5D zal, '+data.spot.number);
                       $('.to_print_price').text(data.fived.price+' TMT');

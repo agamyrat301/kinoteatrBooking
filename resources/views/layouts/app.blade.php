@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }}</title>
+    <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
@@ -11,6 +11,20 @@
           crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+        <style>
+
+        #messages {
+            position: absolute;
+            right: 50px;
+            width: 400px;
+            z-index: 1;
+        }
+
+        #messages .alert, .message {
+            margin: 0;
+        }
+
+        </style>
 
     @yield('third_party_stylesheets')
 
@@ -79,7 +93,13 @@
 
 {{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
 <script src="{{asset('js/jquery.js')}}"></script>
-
+    <script>
+        @if($errors->any() || session('success') || session('error') || session('warning') || session('danger'))
+        setTimeout(function () {
+            $('#messages').fadeOut('slow');
+        }, 5000);
+        @endif
+    </script>
 <script>
     $.ajaxSetup({
         headers: {

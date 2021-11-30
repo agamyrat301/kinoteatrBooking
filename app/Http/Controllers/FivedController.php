@@ -24,18 +24,20 @@ class FivedController extends Controller
     {
         //
     }
-
    
     public function store(Request $request)
     {
+
+       // return  Spot::find($request->get('spot_id'));
+
         $fived = Fived::create([
             'price'=>$request->get('price'),
             'spot_id'=>$request->get('spot_id')
         ]);
 
-        $spot = Spot::find($request->get('spot_id'))->first();
+        $spot = Spot::find($request->get('spot_id'));
 
-        Spot::whereId($request->get('spot_id'))->first()->update(['status'=>false]);
+        Spot::whereId($request->get('spot_id'))->update(['status'=>false]);
 
         return response()->json([
             'success'=> true,
@@ -49,13 +51,11 @@ class FivedController extends Controller
     {
         //
     }
-
  
     public function edit(Fived $fived)
     {
         //
     }
-
  
     public function update(Request $request, Fived $fived)
     {
@@ -75,6 +75,7 @@ class FivedController extends Controller
         }
 
         $fiveds = Fived::when($seans_start_date, function ($query, $seans_start_date) {
+
             // $seans_start_date = Carbon::createFromFormat('m-d-Y', $seans_start_date)->format('Y-m-d');
              if (strlen($seans_start_date) == 10) {
 
@@ -85,8 +86,20 @@ class FivedController extends Controller
                  $to = substr($seans_start_date, 13, 24);
                  return $query->whereBetween('created_at', [$from, $to]);
              }
-         })->orderBy('created_at', 'DESC')->get();
 
-        return view('admin.reports.fived_reports',compact('fiveds'));
+         })->orderBy('created_at', 'DESC')->paginate(10);
+
+        return view('admin.reports.fived_reports')->with('fiveds', $fiveds)->with('seans_start_date', $seans_start_date);
+    }
+
+    public function empty(Request $request)
+    {
+        $fived_spots = Spot::whereZal('5d')->get();
+        foreach ($fived_spots as $spot) {
+            $spot->update([
+                'status'=>true
+            ]);
+        }
+        return redirect()->route('fiveds.index')->with('success','5D zaldaky hemme orunlar boshadyldy');
     }
 }
