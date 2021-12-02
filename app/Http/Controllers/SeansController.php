@@ -148,6 +148,24 @@ class SeansController extends Controller
 
         return redirect()->route('seanses.index')->with('success','seans uytgedildi');
     }
+
+    public function forClient(Seans $seanse)
+    {
+       
+        $Aspots = Spot::whereZal($seanse->hall)->where('number','LIKE','%A%')->get();
+        $Bspots = Spot::whereZal($seanse->hall)->where('number','LIKE','%B%')->get();
+        $Bspots = Spot::whereZal($seanse->hall)->where('number','LIKE','%B%')->get();
+        $Cspots = Spot::whereZal($seanse->hall)->where('number','LIKE','%C%')->get();
+        $Dspots = Spot::whereZal($seanse->hall)->where('number','LIKE','%D%')->get();
+
+        $booking_ids = Booking::where('seans_id', $seanse->id)->pluck('spot_id')->toArray();
+
+        // dd($booking_ids);
+        
+        // return view('admin.seanses.show', compact('seanse','Aspots','Bspots','Cspots','Dspots','booking_ids'));
+
+        return view('admin.clients.seanses',compact('seanse','Aspots','Bspots','Cspots','Dspots','booking_ids'));
+    }
   
     public function destroy(Seans $seanse)
     {

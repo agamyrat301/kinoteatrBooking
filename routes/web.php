@@ -19,6 +19,8 @@ Route::get('/', function () {
     
 });
 
+Route::get('clients/seanses/{seanse}', 'SeansController@forClient')->name('for_client');
+
 Route::prefix('admin')->group(function(){
 
     Auth::routes(['register'=>false]);
