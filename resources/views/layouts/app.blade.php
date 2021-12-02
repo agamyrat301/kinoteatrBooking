@@ -5,25 +5,21 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title')</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <link href="{{asset('css/all.css')}}" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
-          integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
-          crossorigin="anonymous"/>
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
         <style>
+            #messages {
+                position: absolute;
+                right: 50px;
+                width: 400px;
+                z-index: 1;
+            }
 
-        #messages {
-            position: absolute;
-            right: 50px;
-            width: 400px;
-            z-index: 1;
-        }
-
-        #messages .alert, .message {
-            margin: 0;
-        }
-
+            #messages .alert, .message {
+                margin: 0;
+            }
         </style>
 
     @yield('third_party_stylesheets')
@@ -38,7 +34,7 @@
         <!-- Left navbar links -->
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                <a class="nav-link" data-widget="pushmenu" href="#" role="button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-align-justify"><line x1="21" y1="10" x2="3" y2="10"/><line x1="21" y1="6" x2="3" y2="6"/><line x1="21" y1="14" x2="3" y2="14"/><line x1="21" y1="18" x2="3" y2="18"/></svg></a>
             </li>
         </ul>
 
@@ -66,7 +62,7 @@
                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                         <a href="#" class="btn btn-default btn-flat float-right"
                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Sign out
+                            Ulgamdan cyk
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf
@@ -90,8 +86,6 @@
 </div>
 
 <script src="{{ mix('js/app.js') }}" defer></script>
-
-{{-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
 <script src="{{asset('js/jquery.js')}}"></script>
     <script>
         @if($errors->any() || session('success') || session('error') || session('warning') || session('danger'))

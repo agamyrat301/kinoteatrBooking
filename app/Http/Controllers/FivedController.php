@@ -82,12 +82,16 @@ class FivedController extends Controller
                  return $query->whereDate('created_at', $seans_start_date);
 
              } else {
+
                  $from = substr($seans_start_date, 0, 10);
                  $to = substr($seans_start_date, 13, 24);
-                 return $query->whereBetween('created_at', [$from, $to]);
+                 return $query->whereDate('created_at', '>=', $from)
+                              ->whereDate('created_at', '<=', $to);
              }
 
          })->orderBy('created_at', 'DESC')->paginate(10);
+
+        //   dd($fiveds->total());
 
         return view('admin.reports.fived_reports')->with('fiveds', $fiveds)->with('seans_start_date', $seans_start_date);
     }

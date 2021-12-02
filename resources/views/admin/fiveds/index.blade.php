@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    5D 
+@endsection
+
 @section('third_party_stylesheets')
 <style>
 
@@ -120,6 +124,10 @@
                                     <input type="hidden" id="spot_id"/>
 
                                 </div>
+
+                                <div class="theatre col-md-3">
+                                    <div class="btn btn-primary btn-block" style="pointer-events: none;">Ekran</div>
+                                  </div>
                             </div>
 
                             <div class="card-footer">

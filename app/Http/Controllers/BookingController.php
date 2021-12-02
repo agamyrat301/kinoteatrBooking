@@ -32,11 +32,15 @@ class BookingController extends Controller
             })->when($seans_start_date, function ($query, $seans_start_date) {
                // $seans_start_date = Carbon::createFromFormat('m-d-Y', $seans_start_date)->format('Y-m-d');
                 if (strlen($seans_start_date) == 10) {
+
                     return $query->whereDate('created_at', $seans_start_date);
+
+                    
                 } else {
                     $from = substr($seans_start_date, 0, 10);
                     $to = substr($seans_start_date, 13, 24);
-                    return $query->whereBetween('created_at', [$from, $to]);
+                    return $query->whereDate('created_at', '>=', $from)
+                    ->whereDate('created_at', '<=', $to);
                     
                 }
             })->orderBy('created_at', 'DESC');

@@ -2,6 +2,7 @@
 @section('title')
     5D hasabat
 @endsection
+
 @section('third_party_stylesheets')
     <link  rel="stylesheet" href="{{ asset('css/datatables.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/flatpickr.min.css') }}">
@@ -26,7 +27,7 @@
 
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control flatpickr" name="seans_start_date" id="seans_start_date" value="{{ $seans_start_date }}"
-                        placeholder="seans wagty...">
+                        placeholder="berlen wagty...">
                 </div>
 
                 <div class="form-group col-md-6">
@@ -85,7 +86,11 @@
                 <!-- /.card-body -->
               </div>
               {{-- {{ $fiveds->links() }} --}}
-              {{ $fiveds->appends(['seans_start_date'=>$seans_start_date])->links() }}
+              <div class="d-flex justify-content-between">
+                <div>{{ $fiveds->appends(['seans_start_date'=>$seans_start_date])->links() }}</div>
+
+                <div>Jemi <b>{{ $fiveds->total() }}</b> sany</div>
+              </div>
               <!-- /.card -->
             </div>
           </div>

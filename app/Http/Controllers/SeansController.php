@@ -44,7 +44,8 @@ class SeansController extends Controller
                 } else {
                     $from = substr($seans_start_date, 0, 10);
                     $to = substr($seans_start_date, 13, 24);
-                    return $query->whereBetween('start_date', [$from, $to]);
+                    return $query->whereDate('start_date', '>=', $from)
+                    ->whereDate('start_date', '<=', $to);
                 }
             })->orderBy('created_at', 'DESC');
     

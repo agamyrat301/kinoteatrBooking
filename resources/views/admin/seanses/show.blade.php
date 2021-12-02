@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('title')
+    {{ $seanse->seans_number }}
+@endsection
 @section('third_party_stylesheets')
 <style>
 
@@ -64,7 +66,7 @@
                 <div class="row">
                   <div class="col-12">
                     <h4>
-                      <i class="fas fa-globe"></i> Seans maglumatlary
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-globe"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> Seans maglumatlary
                       <small class="float-right">{{ $seanse->seans_number }}</small>
                     </h4>
                   </div>
@@ -153,7 +155,7 @@
                 <div class="row no-print">
                   <div class="col-12">
                     {{-- <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a> --}}
-                    <button type="button" class="btn btn-success float-right seans_bilet_btn"><i class="fas fa-credit-card"></i> Seans ucin Bilet Al
+                    <button type="button" class="btn btn-success float-right seans_bilet_btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-credit-card"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg> Seans ucin Bilet Al
                     </button>
                     {{-- <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                       <i class="fas fa-download"></i> Generate PDF
@@ -273,6 +275,10 @@
                                         <div class="seat"><span>A1</span></div>
                                       </div>
                                     </div>  --}}
+                                </div>
+
+                                <div class="theatre col-md-3">
+                                  <div class="btn btn-primary btn-block" style="pointer-events: none;">Ekran</div>
                                 </div>
                             </div>
 

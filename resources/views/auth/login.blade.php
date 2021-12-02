@@ -18,14 +18,14 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="{{ url('/home') }}"><b>{{ config('app.name') }}</b></a>
+        <b>{{ config('app.name') }}</b>
     </div>
     <!-- /.login-logo -->
 
     <!-- /.login-box-body -->
     <div class="card">
         <div class="card-body login-card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
+            <p class="login-box-msg">Admin Panel</p>
 
             <form method="post" action="{{ url('/admin/login') }}">
                 @csrf
@@ -61,15 +61,15 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-7">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember">
-                            <label for="remember">Remember Me</label>
+                            <label for="remember">Yatda Sakla</label>
                         </div>
                     </div>
 
-                    <div class="col-4">
-                        <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                    <div class="col-5">
+                        <button type="submit" class="btn btn-primary btn-block">Ulgama gir</button>
                     </div>
 
                 </div>
