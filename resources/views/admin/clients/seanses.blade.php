@@ -117,7 +117,7 @@
                 <div class="card">
                     <div class="card-header d-flex">
                         <h3 class="card-title">
-                           {{ $seanse->hall == '3d1' ? '1nji 3D' : '2nji 3D'}}  Zaldan yer saylan
+                           {{ $seanse->seans_number }}
                         </h3>
                     </div>
 
@@ -226,14 +226,14 @@
                             </div>  --}}
                         </div>
 
-                        <div class="theatre col-md-3">
-                          <div class="btn btn-primary btn-block" style="pointer-events: none;">Ekran</div>
+                        <div class="d-flex">
+                          <div class="btn btn-primary m-auto btn-block" style="pointer-events: none; max-width:900px;font-size:30px;">Ekran</div>
                         </div>
                     </div>
 
-                    <div class="card-footer">
+                    {{-- <div class="card-footer">
                         <button class="btn btn-primary float-right bilet_al">Bilet al</button>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

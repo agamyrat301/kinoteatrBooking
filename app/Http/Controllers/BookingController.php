@@ -80,13 +80,21 @@ class BookingController extends Controller
         ]);
 
         $booking->update(['booking_number'=>'#FAKTURA000'.$booking->id]);
-
+        $zal_spot = null;
         if($booking){
+            if($booking->seans->spot == '3d1'){
+                $zal_spot = '1-nji zal 3D';
+            } else {
+                $zal_spot = '2-nji zal 3D';
+            }
+            
             return response()->json([
                 'msg'=>'booking created successfully',
                 'booking'=>$booking,
                 'seans'=>$booking->seans,
-                'spot'=> $booking->spot
+                'spot'=> $booking->spot,
+                'zal_spot'=>$zal_spot.' , '.$booking->spot->number,
+                'seans_time'=>date('d/m/Y H:i', strtotime($booking->seans->start_date))
             ]);
             
         } else {

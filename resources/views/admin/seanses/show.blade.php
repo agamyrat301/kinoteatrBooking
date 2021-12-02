@@ -258,14 +258,17 @@
             <p style="text-align:center;"><b>Film ady:</b><span class="to_print_film_name"></span></p> --}}
 
             <table>
-              <tr>
+              {{-- <tr>
                 <td><b>Seans nomer: </b></td><td><span class="to_print_p"></span></td>
-              </tr>
+              </tr> --}}
               <tr>
                 <td><b>Film ady: </b></td><td><span class="to_print_film_name"></span></td>
               </tr>
               <tr>
                 <td><b>Zaldaky orny: </b></td><td><span class="to_print_spot"></span></td>
+              </tr>
+              <tr>
+                <td><b>Seans wagty: </b></td><td><span class="to_print_time"></span></td>
               </tr>
               <tr>
                 <td><b>Bahasy: </b></td><td><span class="to_print_price"></span></td>
@@ -311,10 +314,11 @@
                     },
                     success:function(data) {
                       $('#toprint').css('display','block');
-                      $('.to_print_p').text(data.seans.seans_number);
+                      // $('.to_print_p').text(data.seans.seans_number);
                       $('.to_print_film_name').text(data.seans.film_name);
-                      $('.to_print_spot').text(data.spot.number);
+                      $('.to_print_spot').text(data.zal_spot);
                       $('.to_print_price').text(data.seans.price+' TMT');
+                      $('.to_print_time').text(data.seans_time);
                       
                         //console.log(data.booking.booking_number);
                        // window.print();
