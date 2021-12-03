@@ -63,7 +63,7 @@
                         <th>Seans</th>
                         <th>Seans bahasy</th>
                         
-                        <th>Baslayan wagty</th>
+                        <th>Seans wagty</th>
                         <th>Dowamlylygy</th>
                         <th>nace sany bilet</th>
                         <th>jemi girdeji(TMT)</th>

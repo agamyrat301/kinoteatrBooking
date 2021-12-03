@@ -237,20 +237,22 @@
                 </div>
             </div>
         </div>
-
     </div>
 
 
 
 <script src="{{ mix('js/app.js') }}" defer></script>
 <script src="{{asset('js/jquery.js')}}"></script>
-    <script>
-        @if($errors->any() || session('success') || session('error') || session('warning') || session('danger'))
-        setTimeout(function () {
-            $('#messages').fadeOut('slow');
-        }, 5000);
-        @endif
-    </script>
+<script>
+    window.setInterval('refresh()', 2000); 	
+    // Call a function every 10000 milliseconds 
+    // (OR 10 seconds).
+
+    // Refresh or reload page.
+    function refresh() {
+        window .location.reload();
+    }
+</script>
 <script>
     $.ajaxSetup({
         headers: {

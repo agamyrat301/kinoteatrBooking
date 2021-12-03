@@ -17,7 +17,7 @@ class FivedController extends Controller
         $Cspots = Spot::whereZal('5d')->where('number','LIKE','%C%')->get();
         $Dspots = Spot::whereZal('5d')->where('number','LIKE','%D%')->get();
         $booking_ids = Booking::where('seans_id', 3)->pluck('spot_id')->toArray();
-        return view('admin.fiveds.index',compact('seanse','Aspots','Bspots','Cspots','Dspots','booking_ids'));
+        return view('admin.fiveds.index',compact('Aspots','Bspots','Cspots','Dspots','booking_ids'));
     }
 
     public function create()
